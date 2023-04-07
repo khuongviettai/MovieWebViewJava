@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Movie Webview</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_favorite">Favorite</string>
+    <string name="nav_history">History</string>
+
+    <string name="movie_hint">Name…</string>
+
+    <string name="splash_text">Code By Khuong Viet Tai</string>
+    <string name="khuongviettai">KhuongVietTai</string>
+</resources>

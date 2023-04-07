@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Movie Webview</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_favorite">Yêu thích</string>
+    <string name="nav_history">Lịch sử</string>
+    <string name="movie_hint">Tên...</string>
+    <string name="splash_text">Code by Khuong Viet Tai</string>
+    <string name="khuongviettai">KhuongVietTai</string>
+</resources>

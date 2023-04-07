@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "44135434673",
+    "firebase_url": "https://moviewwebview-default-rtdb.firebaseio.com",
+    "project_id": "moviewwebview",
+    "storage_bucket": "moviewwebview.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:44135434673:android:afe9ffc48d44ce37189590",
+        "android_client_info": {
+          "package_name": "com.example.movie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "44135434673-52hvel4emlof2n41titdairt9chh40ur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMC_D2J6ShrAbX0tvopXXf004RX9fiOeY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "44135434673-52hvel4emlof2n41titdairt9chh40ur.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
