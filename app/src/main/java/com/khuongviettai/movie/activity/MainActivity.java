@@ -1,4 +1,4 @@
-package com.example.movie.activity;
+package com.khuongviettai.movie.activity;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -6,8 +6,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.movie.R;
-import com.example.movie.adapter.MyViewPagerAdapter;
+import com.khuongviettai.movie.R;
+import com.khuongviettai.movie.adapter.MyViewPagerAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

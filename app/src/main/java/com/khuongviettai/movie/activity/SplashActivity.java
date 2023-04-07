@@ -1,4 +1,4 @@
-package com.example.movie.activity;
+package com.khuongviettai.movie.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -9,7 +9,7 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.movie.R;
+import com.khuongviettai.movie.R;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.movie.activity;
+package com.khuongviettai.movie.activity;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -20,9 +20,9 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.movie.MyApplication;
-import com.example.movie.R;
-import com.example.movie.model.Movie;
+import com.khuongviettai.movie.MyApplication;
+import com.khuongviettai.movie.R;
+import com.khuongviettai.movie.model.Movie;
 import com.kaopiz.kprogresshud.KProgressHUD;
 
 import java.util.HashMap;

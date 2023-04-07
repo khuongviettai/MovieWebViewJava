@@ -1,4 +1,4 @@
-package com.example.movie.adapter;
+package com.khuongviettai.movie.adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -12,8 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.movie.R;
-import com.example.movie.model.Movie;
+import com.khuongviettai.movie.R;
+import com.khuongviettai.movie.model.Movie;
 
 import java.util.List;
 

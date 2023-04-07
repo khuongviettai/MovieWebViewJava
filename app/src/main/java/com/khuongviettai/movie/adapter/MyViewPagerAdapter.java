@@ -1,13 +1,13 @@
-package com.example.movie.adapter;
+package com.khuongviettai.movie.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.movie.fragment.FavoriteFragment;
-import com.example.movie.fragment.HistoryFragment;
-import com.example.movie.fragment.HomeFragment;
+import com.khuongviettai.movie.fragment.FavoriteFragment;
+import com.khuongviettai.movie.fragment.HistoryFragment;
+import com.khuongviettai.movie.fragment.HomeFragment;
 
 public class MyViewPagerAdapter extends FragmentStateAdapter {
 

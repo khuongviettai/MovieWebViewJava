@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.movie">
+    package="com.khuongviettai.movie">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-configuration android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="com.example.movie.MyApplication"
+        android:name="com.khuongviettai.movie.MyApplication"
         android:allowBackup="false"
         tools:replace="android:allowBackup"
         android:fitsSystemWindows="true"
@@ -22,7 +22,7 @@
 
         <activity
             android:exported="true"
-            android:name="com.example.movie.activity.SplashActivity"
+            android:name="com.khuongviettai.movie.activity.SplashActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize">
             <intent-filter>
                 <action
@@ -34,12 +34,12 @@
 
         <activity
             android:exported="false"
-            android:name="com.example.movie.activity.MainActivity"
+            android:name="com.khuongviettai.movie.activity.MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
 
         <activity
             android:exported="false"
-            android:name="com.example.movie.activity.PlayMovieActivity"
+            android:name="com.khuongviettai.movie.activity.PlayMovieActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
     </application>
 

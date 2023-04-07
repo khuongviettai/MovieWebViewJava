@@ -1,4 +1,4 @@
-package com.example.movie;
+package com.khuongviettai.movie;
 
 import android.app.Application;
 import android.content.Context;

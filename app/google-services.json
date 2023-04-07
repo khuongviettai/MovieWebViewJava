@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:44135434673:android:afe9ffc48d44ce37189590",
+        "mobilesdk_app_id": "1:44135434673:android:bfd7f68e0b1a9aaa189590",
         "android_client_info": {
-          "package_name": "com.example.movie"
+          "package_name": "com.khuongviettai.movie"
         }
       },
       "oauth_client": [

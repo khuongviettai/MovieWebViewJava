@@ -1,11 +1,16 @@
-package com.example.movie.fragment;
+package com.khuongviettai.movie.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,34 +18,49 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.movie.MyApplication;
-import com.example.movie.R;
-import com.example.movie.activity.PlayMovieActivity;
-import com.example.movie.adapter.MovieAdapter;
-import com.example.movie.model.Movie;
+import com.khuongviettai.movie.MyApplication;
+import com.khuongviettai.movie.R;
+import com.khuongviettai.movie.activity.PlayMovieActivity;
+import com.khuongviettai.movie.adapter.MovieAdapter;
+import com.khuongviettai.movie.model.Movie;
+import com.khuongviettai.movie.utils.Utils;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.kaopiz.kprogresshud.KProgressHUD;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FavoriteFragment extends Fragment {
+public class HomeFragment extends Fragment {
 
+    private KProgressHUD progressHUD;
     private List<Movie> listMovies;
     private MovieAdapter movieAdapter;
+    private EditText edtSearchName;
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_favorite, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        RecyclerView rcvFavorite = view.findViewById(R.id.rcv_favorite);
+        RecyclerView rcvHome = view.findViewById(R.id.rcv_home);
+        edtSearchName = view.findViewById(R.id.edt_search_name);
+        ImageView imgSearch = view.findViewById(R.id.img_search);
+        if (getActivity() != null) {
+            progressHUD = KProgressHUD.create(getActivity())
+                    .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                    .setLabel("Please wait...")
+                    .setCancellable(false)
+                    .setAnimationSpeed(2)
+                    .setDimAmount(0.5f);
+        }
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
-        rcvFavorite.setLayoutManager(gridLayoutManager);
+        rcvHome.setLayoutManager(gridLayoutManager);
         listMovies = new ArrayList<>();
         movieAdapter = new MovieAdapter(listMovies, getActivity(), new MovieAdapter.IClickItemListener() {
             @Override
@@ -53,27 +73,75 @@ public class FavoriteFragment extends Fragment {
                 onClickFavoriteMovie(id, favorite);
             }
         });
-        rcvFavorite.setAdapter(movieAdapter);
+        rcvHome.setAdapter(movieAdapter);
 
-        getListMoviesFavorite();
+        getListMovies("");
+
+        imgSearch.setOnClickListener(view1 -> searchMovie());
+
+        edtSearchName.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                searchMovie();
+                return true;
+            }
+            return false;
+        });
+
+        edtSearchName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Do nothing
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Do nothing
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String strKey = s.toString().trim();
+                if (strKey.equals("") || strKey.length() == 0) {
+                    listMovies.clear();
+                    getListMovies("");
+                }
+            }
+        });
 
         return view;
     }
 
-    private void getListMoviesFavorite() {
+    private void searchMovie() {
+        String strKey = edtSearchName.getText().toString().trim();
+        listMovies.clear();
+        getListMovies(strKey);
+        Utils.hideSoftKeyboard(getActivity());
+    }
+
+    private void getListMovies(String key) {
         if (getActivity() == null) {
             return;
         }
-        MyApplication.get(getActivity()).getDatabaseReference().orderByChild("favorite").equalTo(true)
+        progressHUD.show();
+        MyApplication.get(getActivity()).getDatabaseReference()
                 .addChildEventListener(new ChildEventListener() {
                     @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, String s) {
+                        progressHUD.dismiss();
                         Movie movie = dataSnapshot.getValue(Movie.class);
                         if (movie == null || listMovies == null || movieAdapter == null) {
                             return;
                         }
-                        listMovies.add(0, movie);
+
+                        if (key == null || key.equals("")) {
+                            listMovies.add(0, movie);
+                        } else {
+                            if (movie.getTitle().toLowerCase().trim().contains(key.toLowerCase().trim())) {
+                                listMovies.add(0, movie);
+                            }
+                        }
+
                         movieAdapter.notifyDataSetChanged();
                     }
 
@@ -86,14 +154,11 @@ public class FavoriteFragment extends Fragment {
                         }
                         for (Movie movieEntity : listMovies) {
                             if (movie.getId() == movieEntity.getId()) {
-                                if (!movie.isFavorite()) {
-                                    listMovies.remove(movieEntity);
-                                } else {
-                                    movieEntity.setImage(movie.getImage());
-                                    movieEntity.setTitle(movie.getTitle());
-                                    movieEntity.setUrl(movie.getUrl());
-                                    movieEntity.setHistory(movie.isHistory());
-                                }
+                                movieEntity.setImage(movie.getImage());
+                                movieEntity.setTitle(movie.getTitle());
+                                movieEntity.setUrl(movie.getUrl());
+                                movieEntity.setFavorite(movie.isFavorite());
+                                movieEntity.setHistory(movie.isHistory());
                                 break;
                             }
                         }

@@ -1,4 +1,4 @@
-package com.example.movie.model;
+package com.khuongviettai.movie.model;
 
 import java.io.Serializable;
 

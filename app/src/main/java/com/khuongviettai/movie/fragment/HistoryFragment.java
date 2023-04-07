@@ -1,4 +1,4 @@
-package com.example.movie.fragment;
+package com.khuongviettai.movie.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -13,11 +13,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.movie.MyApplication;
-import com.example.movie.R;
-import com.example.movie.activity.PlayMovieActivity;
-import com.example.movie.adapter.MovieHistoryAdapter;
-import com.example.movie.model.Movie;
+import com.khuongviettai.movie.MyApplication;
+import com.khuongviettai.movie.R;
+import com.khuongviettai.movie.activity.PlayMovieActivity;
+import com.khuongviettai.movie.adapter.MovieHistoryAdapter;
+import com.khuongviettai.movie.model.Movie;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

@@ -1,4 +1,4 @@
-package com.example.movie.utils;
+package com.khuongviettai.movie.utils;
 
 import android.app.Activity;
 import android.view.inputmethod.InputMethodManager;

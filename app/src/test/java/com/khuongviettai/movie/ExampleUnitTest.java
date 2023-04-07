@@ -1,4 +1,4 @@
-package com.example.movie;
+package com.khuongviettai.movie;
 
 import static org.junit.Assert.assertEquals;
 
